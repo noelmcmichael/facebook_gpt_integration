@@ -14,4 +14,6 @@ This project aims to create a question-and-answer application based on the "Big 
 - **[X] Backend API (FastAPI)**
   - [X] Create `main.py`
   - [X] Implement `/ask` endpoint
-- **[ ] Simple Frontend**
+- **[X] Simple Frontend**
+  - [X] Create `index.html`
+  - [X] Add JavaScript to interact with backend
