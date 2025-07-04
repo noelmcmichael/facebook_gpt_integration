@@ -1,5 +1,7 @@
 import os
 from fastapi import FastAPI, HTTPException
+from fastapi.staticfiles import StaticFiles
+from fastapi.responses import FileResponse
 from pydantic import BaseModel
 from openai import OpenAI
 from dotenv import load_dotenv
@@ -15,6 +17,13 @@ if not OPENAI_API_KEY or not ASSISTANT_ID:
 
 # Initialize OpenAI client
 client = OpenAI(api_key=OPENAI_API_KEY)
+
+app.mount("/static", StaticFiles(directory="static"), name="static")
+
+@app.get("/")
+async def read_index():
+    return FileResponse('static/index.html')
+
 
 # Initialize FastAPI app
 app = FastAPI()

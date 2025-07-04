@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Big Beautiful Bill Q&A</title>
+    <style>
+        body {
+            font-family: sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        #qa-container {
+            width: 80%;
+            max-width: 600px;
+            border: 1px solid #ccc;
+            padding: 20px;
+            border-radius: 8px;
+        }
+        #question-input {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border-radius: 4px;
+            border: 1px solid #ccc;
+        }
+        #ask-button {
+            width: 100%;
+            padding: 10px;
+            border: none;
+            background-color: #007bff;
+            color: white;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        #answer-container {
+            margin-top: 20px;
+            white-space: pre-wrap;
+        }
+    </style>
+</head>
+<body>
+    <div id="qa-container">
+        <h1>Big Beautiful Bill Q&A</h1>
+        <input type="text" id="question-input" placeholder="Ask a question about the bill...">
+        <button id="ask-button">Ask</button>
+        <div id="answer-container"></div>
+    </div>
+
+    <script>
+        const questionInput = document.getElementById('question-input');
+        const askButton = document.getElementById('ask-button');
+        const answerContainer = document.getElementById('answer-container');
+
+        askButton.addEventListener('click', async () => {
+            const question = questionInput.value;
+            if (!question) {
+                return;
+            }
+
+            answerContainer.textContent = 'Thinking...';
+
+            try {
+                const response = await fetch('/ask', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({ question })
+                });
+
+                if (response.ok) {
+                    const data = await response.json();
+                    answerContainer.textContent = data.answer;
+                } else {
+                    answerContainer.textContent = 'Error: Could not get an answer.';
+                }
+            } catch (error) {
+                answerContainer.textContent = 'Error: Could not connect to the server.';
+            }
+        });
+    </script>
+</body>
+</html>
