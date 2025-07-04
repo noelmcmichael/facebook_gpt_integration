@@ -11,5 +11,7 @@ This project aims to create a question-and-answer application based on the "Big 
   - [ ] Set up Python virtual environment
   - [ ] Install dependencies
 - **[ ] OpenAI Assistant Creation**
-- **[ ] Backend API (FastAPI)**
+- **[X] Backend API (FastAPI)**
+  - [X] Create `main.py`
+  - [X] Implement `/ask` endpoint
 - **[ ] Simple Frontend**
