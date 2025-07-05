@@ -49,7 +49,8 @@ async def ask_question(request: QuestionRequest):
         # Run the assistant
         run = client.beta.threads.runs.create(
             thread_id=thread.id,
-            assistant_id=ASSISTANT_ID
+            assistant_id=ASSISTANT_ID,
+            model="gpt-4o"
         )
 
         # Wait for the run to complete
