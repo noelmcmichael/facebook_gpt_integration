@@ -73,6 +73,4 @@ jobs:
             --region=${{ env.GCP_REGION }} \
             --platform=managed \
             --allow-unauthenticated \
-            --set-env-vars="OPENAI_API_KEY=${{ secrets.OPENAI_API_KEY }}" \
-            --set-env-vars="ASSISTANT_ID=${{ secrets.ASSISTANT_ID }}" \
-            --set-env-vars="VECTOR_STORE_ID=${{ secrets.VECTOR_STORE_ID }}"
+            --set-env-vars="OPENAI_API_KEY=${{ secrets.OPENAI_API_KEY }},ASSISTANT_ID=${{ secrets.ASSISTANT_ID }},VECTOR_STORE_ID=${{ secrets.VECTOR_STORE_ID }}"
