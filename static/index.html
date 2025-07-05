@@ -51,6 +51,8 @@
     </div>
 
     <script>
+        let currentThreadId = null;
+
         const questionInput = document.getElementById('question-input');
         const askButton = document.getElementById('ask-button');
         const answerContainer = document.getElementById('answer-container');
@@ -62,6 +64,7 @@
             }
 
             answerContainer.textContent = 'Thinking...';
+            questionInput.value = '';
 
             try {
                 const response = await fetch('/ask', {
@@ -69,12 +72,21 @@
                     headers: {
                         'Content-Type': 'application/json'
                     },
-                    body: JSON.stringify({ question })
+                    body: JSON.stringify({ 
+                        question: question,
+                        thread_id: currentThreadId 
+                    })
                 });
 
                 if (response.ok) {
                     const data = await response.json();
-                    answerContainer.textContent = data.answer;
+                    currentThreadId = data.thread_id; // Store the thread_id
+                    
+                    if (data.status === 'requires_action') {
+                        answerContainer.textContent = `Clarifying question: ${data.answer}`;
+                    } else {
+                        answerContainer.textContent = data.answer;
+                    }
                 } else {
                     answerContainer.textContent = 'Error: Could not get an answer.';
                 }
