@@ -1,3 +1,15 @@
+
+## Deployment
+
+This application is automatically deployed to Google Cloud Run when changes are pushed to the `main` branch. The deployment process is managed by a GitHub Actions workflow defined in `.github/workflows/gcp-deploy.yml`.
+
+The workflow performs the following steps:
+1.  **Run Tests:** The Playwright end-to-end tests are run to ensure the application is functioning correctly.
+2.  **Build & Push Image:** A Docker image is built and pushed to Google Artifact Registry.
+3.  **Deploy to Cloud Run:** The new image is deployed to the Cloud Run service.
+
+The live application can be accessed at the URL provided by the Cloud Run service after the first successful deployment.
+
 # Facebook GPT Integration
 
 This project is a question-and-answer web application about the "Big Beautiful Bill". It uses the OpenAI Assistants API to provide answers from the bill's text.
@@ -56,4 +68,3 @@ This project is a question-and-answer web application about the "Big Beautiful B
     ```bash
     /Users/noelmcmichael/Workspace/facebook_gpt_integration/.venv/bin/pytest tests/test_e2e.py
     ```
-
