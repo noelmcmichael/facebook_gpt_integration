@@ -1,13 +1,9 @@
 {
-  "baseUrl": "https://www.wikipedia.org",
+  "baseUrl": "http://127.0.0.1:8000",
   "pages": [
     {
       "path": "/",
       "name": "home"
-    },
-    {
-      "path": "/wiki/Main_Page",
-      "name": "main_page"
     }
   ],
   "outputDir": "playwright-results"
