@@ -27,7 +27,9 @@ jobs:
           pip install playwright pytest-playwright
           playwright install
       - name: Run tests
-        run: pytest tests/test_e2e.py
+        run: |
+          uvicorn main:app --host 127.0.0.1 --port 8000 &
+          pytest tests/test_e2e.py
 
   deploy:
     needs: test
