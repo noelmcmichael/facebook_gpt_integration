@@ -1,0 +1,24 @@
+{
+  "name": "facebook_gpt_integration",
+  "version": "1.0.0",
+  "description": "This project aims to create a question-and-answer application based on the \"Big Beautiful Bill\". It uses the OpenAI Assistants API to provide answers from the bill's text.",
+  "main": "analyze-page.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/noelmcmichael/facebook_gpt_integration.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/noelmcmichael/facebook_gpt_integration/issues"
+  },
+  "homepage": "https://github.com/noelmcmichael/facebook_gpt_integration#readme",
+  "dependencies": {
+    "playwright": "^1.53.2"
+  }
+}

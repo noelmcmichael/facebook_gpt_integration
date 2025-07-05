@@ -18,15 +18,14 @@ if not OPENAI_API_KEY or not ASSISTANT_ID:
 # Initialize OpenAI client
 client = OpenAI(api_key=OPENAI_API_KEY)
 
+# Initialize FastAPI app
+app = FastAPI()
+
 app.mount("/static", StaticFiles(directory="static"), name="static")
 
 @app.get("/")
 async def read_index():
     return FileResponse('static/index.html')
-
-
-# Initialize FastAPI app
-app = FastAPI()
 
 class QuestionRequest(BaseModel):
     question: str

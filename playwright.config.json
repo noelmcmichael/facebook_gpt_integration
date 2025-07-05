@@ -1,0 +1,14 @@
+{
+  "baseUrl": "https://www.wikipedia.org",
+  "pages": [
+    {
+      "path": "/",
+      "name": "home"
+    },
+    {
+      "path": "/wiki/Main_Page",
+      "name": "main_page"
+    }
+  ],
+  "outputDir": "playwright-results"
+}
