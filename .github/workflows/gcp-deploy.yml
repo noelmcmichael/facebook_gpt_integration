@@ -33,7 +33,7 @@ jobs:
       - name: Run tests
         run: |
           uvicorn main:app --host 127.0.0.1 --port 8000 &
-          sleep 10
+          until curl -s http://127.0.0.1:8000/ > /dev/null; do echo "Waiting for server..."; sleep 1; done
           pytest tests/test_e2e.py
 
   deploy:
