@@ -33,7 +33,15 @@ jobs:
       - name: Run tests
         run: |
           uvicorn main:app --host 127.0.0.1 --port 8000 &
-          until curl -s http://127.0.0.1:8000/ > /dev/null; do echo "Waiting for server..."; sleep 1; done
+          end_time=$((SECONDS+120))
+          until curl -s http://127.0.0.1:8000/ > /dev/null; do 
+            if [ $SECONDS -ge $end_time ]; then
+              echo "Server failed to start within 2 minutes."
+              exit 1
+            fi
+            echo "Waiting for server..."; 
+            sleep 1; 
+          done
           pytest tests/test_e2e.py
 
   deploy:

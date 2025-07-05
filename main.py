@@ -2,6 +2,7 @@ import os
 from fastapi import FastAPI, HTTPException
 from fastapi.staticfiles import StaticFiles
 from fastapi.responses import FileResponse
+from typing import Optional
 from pydantic import BaseModel
 from openai import OpenAI
 from dotenv import load_dotenv
@@ -29,7 +30,7 @@ async def read_index():
 
 class AskRequest(BaseModel):
     question: str
-    thread_id: str | None = None
+    thread_id: Optional[str] = None
 
 class AskResponse(BaseModel):
     answer: str
