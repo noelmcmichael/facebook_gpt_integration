@@ -21,5 +21,5 @@ ENV OPENAI_API_KEY=$OPENAI_API_KEY
 ENV ASSISTANT_ID=$ASSISTANT_ID
 ENV VECTOR_STORE_ID=$VECTOR_STORE_ID
 
-# Run uvicorn when the container launches
-CMD ["uvicorn", "main:app", "--host", "0.0.0.0", "--port", "8000"]
+# Run uvicorn when the container launches, using the PORT environment variable
+CMD exec uvicorn main:app --host 0.0.0.0 --port ${PORT:-8000}
